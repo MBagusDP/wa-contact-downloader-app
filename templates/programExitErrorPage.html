@@ -1,0 +1,32 @@
+<body style="background-color:black;">
+    <div style="text-align:center; font-family:courier; color:white;">
+        {% block title %}
+        <br><br><br><br><br>
+        <img src="https://cdn-icons-png.flaticon.com/512/4406/4406170.png" width="100px">
+        <p style="font-size:50px;">WHATSAPP CONTACTS DOWNLOADER</p>
+        {% endblock %}
+        {% block content %}
+        <p style="font-size:20px; font-weight:bold;">THE PROGRAM HAS BEEN TERMINATED DUE TO:</p>
+        <p style="text-align:left; padding-left:760px; font-size:20px; font-weight:bold;">1. Long loading page time</p>
+        <p style="text-align:left; padding-left:760px; font-size:20px; font-weight:bold;">2. Unresponsive HTML element/elements</p>
+        <p style="text-align:left; padding-left:760px; font-size:20px; font-weight:bold;">3. Disconnected from Whatsapp Web</p>
+        <br>
+        <p style="font-size:25px; font-weight:bold; color:#94d87c;">Make sure your internet connection is secure</p>
+        <p style="font-size:25px; font-weight:bold; color:#94d87c;">and your phone battery is full!</p>
+        <br><br>
+        <form action="/developersPage" method="POST">
+            <p style="font-size:20px; font-weight:bold; color:white;">Developers Page >>>
+                <input type="hidden" id="develMsg" name="develMsg" value="{{error}}">
+                <button type="submit" style="font-family:courier; font-size:20px; font-weight:bold; color:black; background-color:#94d87c;">Developers Page</button>
+            </p>
+        </form>
+        <div style="text-align:Center; font-family:courier; padding-right:50px;">
+            <p style="font-size:20px; font-weight:bold; color:white;">Back to main page >>>
+                <a href="http://127.0.0.1:5000">
+                    <button type="button" style="font-family:courier; font-size:20px; font-weight:bold; color:black; background-color:#94d87c;">Main Page</button>
+                </a>
+            </p>
+        </div>
+        {% endblock %}
+    </div>
+</body>
