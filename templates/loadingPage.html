@@ -1,0 +1,25 @@
+<body style="display:flex; align-items:center; justify-content:center; background-color:black;">
+    <div style="text-align:center; font-family:courier; color:white;">
+        <p>
+            <img src="https://media.tenor.com/1Qah7X4zx3oAAAAj/neon-cat-rainbow.gif" width="150px">
+        </p>
+        <p style="font-size:30px; font-weight:bold;">{{loadingText}}</p>
+        <p id="test" style="font-size:30px; font-weight:bold;"></p>
+    </div>
+    <script>
+        function navigate() {
+            var urlParams = new URLSearchParams(window.location.search);
+            var loadingText = encodeURIComponent(urlParams.get('loadingText')).replace(/%20/g, '+');
+            var chatFilter = encodeURIComponent(urlParams.get('chatFilter')).replace(/%20/g, '+');
+            // var keywordSearch = encodeURIComponent(urlParams.get('keywordSearch')).replace(/%20/g, '+');
+            if (loadingText === 'Generating+QR+Code...') {
+                // window.location.href = 'WAQRCodeDownloader?chatFilter='+chatFilter+'&loadingText=Downloading+WA+Contacts...&keywordSearch='+keywordSearch;
+                window.location.href = 'WAQRCodeDownloader?chatFilter='+chatFilter+'&loadingText=Downloading+WA+Contacts...';
+            } else { 
+                // window.location.href = 'WAContactsDownloader?chatFilter='+chatFilter+'&keywordSearch='+keywordSearch;
+                window.location.href = 'WAContactsDownloader?chatFilter='+chatFilter;
+            }
+        }
+        navigate();
+    </script>
+</body>

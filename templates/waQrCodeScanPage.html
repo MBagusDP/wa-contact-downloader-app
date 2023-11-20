@@ -1,0 +1,20 @@
+<body style="display:flex; align-items:center; justify-content:center; background-color:black;">
+    <div style="text-align:center; font-family:courier; color:white;">
+        <img src="https://cdn-icons-png.flaticon.com/512/4406/4406170.png" width="100px">
+        <p style="font-size:50px;">WHATSAPP CONTACTS DOWNLOADER</p>
+        <img src="image/wa_qrcode.png" width="200px">
+        <p style="font-size:20px; font-weight:bold;">Scan Whatsapp QR Code to Login</p>
+    </div>
+    <script>
+        var urlParams = new URLSearchParams(window.location.search);
+        var loadingText = encodeURIComponent(urlParams.get('loadingText')).replace(/%20/g, '+');
+        var chatFilter = encodeURIComponent(urlParams.get('chatFilter')).replace(/%20/g, '+');
+        // var keywordSearch = encodeURIComponent(urlParams.get('keywordSearch')).replace(/%20/g, '+');
+        function navigate() {
+            // var url = 'WAQRScanDetector?chatFilter='+chatFilter+'&loadingText='+loadingText+'&keywordSearch='+keywordSearch;
+            var url = 'WAQRScanDetector?chatFilter='+chatFilter+'&loadingText='+loadingText;
+            window.location.href = url;
+        }
+        navigate();
+    </script>
+</body>

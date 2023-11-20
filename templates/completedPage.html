@@ -1,0 +1,28 @@
+<body style="display:flex; align-items:center; justify-content:center; background-color:black;">
+    <div style="text-align:center; font-family:courier; color:white;">
+        <p>
+            <img src="https://media.tenor.com/jvDyDzlpvC4AAAAj/banana-happy.gif" width="150px">
+            <img src="https://media.tenor.com/jvDyDzlpvC4AAAAj/banana-happy.gif" width="150px">
+            <img src="https://media.tenor.com/jvDyDzlpvC4AAAAj/banana-happy.gif" width="150px">
+        </p>
+        <br>
+        <p style="font-size:20px; font-weight:bold;">Data gathering process has completed successfully!</p>
+        <p style="font-size:20px; font-weight:bold;">The Excel file will be downloaded automatically</p>
+        <br>
+        <p style="font-size:30px; font-weight:bold; color:#94d87c;">Thank you for using our service!</p>
+        <br><br>
+        <p style="font-size:20px; font-weight:bold; color:white;">Download more contacts >>>
+            <a href="http://127.0.0.1:5000">
+                <button type="button" style="font-family:courier; font-size:20px; font-weight:bold; color:black; background-color:#94d87c;">Main Page</button>
+            </a>
+        </p>
+    </div>
+    <script>
+        function navigate() {
+            var urlParams = new URLSearchParams(window.location.search);
+            var fileName= urlParams.get('fileName')
+            window.location.href = 'downloadFile?fileName='+fileName
+        }
+        navigate();
+    </script>
+</body>
