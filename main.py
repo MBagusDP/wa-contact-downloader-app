@@ -3,7 +3,7 @@ Flask API for WA Contacts Downloader
 """
 
 # Import necessary modules
-from flask import jsonify, make_response, request, render_template, current_app, redirect
+from flask import Flask, jsonify, make_response, request, render_template, current_app, redirect
 from app import create_app
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
@@ -16,6 +16,10 @@ import pandas as pd
 import traceback
 import qrcode
 import os
+
+def create_app():
+    app = Flask(__name__, template_folder='templates', static_folder='image')
+    return app
 
 # Create Flask application
 app = create_app()
@@ -160,3 +164,8 @@ def WAContactsDownloader():
 @app.errorhandler(404)
 def not_found(e):
     return jsonify(error=str(e)), 404
+
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
