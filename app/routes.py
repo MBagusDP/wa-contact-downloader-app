@@ -3,7 +3,7 @@ Flask API for WA Contacts Downloader
 """
 
 # Import necessary modules
-from flask import jsonify, make_response, request, render_template, current_app, redirect
+from flask import jsonify, make_response, request, render_template, current_app, redirect, send_from_directory
 from app import create_app
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
@@ -23,6 +23,12 @@ app = create_app()
 
 @app.route('/', methods=['POST','GET'])
 def home():
+    try:
+        home_directory = os.path.expanduser("~")
+        path = os.path.join(home_directory, 'Downloads\\wa_qrcode.png')
+        os.remove(path)
+    except:
+        pass
     return render_template("mainPage.html")
 
 
@@ -48,6 +54,15 @@ def completedPage():
 def developersPage():
     develMsg = request.form.get('develMsg')
     return render_template("developersPage.html", develMsg=develMsg)
+
+
+@app.route('/downloads')
+def serveFile():
+    file_name = request.args.get('fileName')
+    home_directory = os.path.expanduser("~")
+    path = os.path.join(home_directory, 'Downloads')
+    downloads_folder = path
+    return send_from_directory(downloads_folder, file_name)
 
 
 @app.route('/downloadFile')
@@ -84,10 +99,12 @@ def WAQRDownloader():
                 qr_data_code = driver.find_element(By.XPATH, '//div[@class="_19vUU"]').get_attribute('data-ref')
             else:
                 break
-        qrcode.make(qr_data_code).save('image/wa_qrcode.png')
+        home_directory = os.path.expanduser("~")
+        path = os.path.join(home_directory, 'Downloads\\wa_qrcode.png')
+        qrcode.make(qr_data_code).save(path)
         current_app.driver = driver
         
-        return render_template("waQrCodeScanPage.html", chatFilter=chat_filter, loadingText=loading_text)
+        return render_template("waQrCodeScanPage.html", chatFilter=chat_filter, loadingText=loading_text, pngPath=path)
     except:
         driver.close()
         if 'Message: no such window: target window already closed' in str(traceback.format_exc()):
@@ -100,11 +117,12 @@ def WAQRDownloader():
 def WAQRScanDetector():
     chat_filter = request.args.get('chatFilter')
     loading_text = request.args.get('loadingText')
-    # keyword_search = request.args.get('keywordSearch')
     driver = current_app.driver
     try:
         WebDriverWait(driver, 100).until(EC.visibility_of_element_located((By.XPATH, '//div[@class="_3RpB9"]')))
-        os.remove('image/wa_qrcode.png')
+        home_directory = os.path.expanduser("~")
+        path = os.path.join(home_directory, 'Downloads\\wa_qrcode.png')
+        os.remove(path)
         current_app.driver = driver
         return render_template('loadingPage.html', chatFilter=chat_filter, loadingText=loading_text)
     except:
@@ -148,7 +166,7 @@ def WAContactsDownloader():
         df = pd.DataFrame(contacts, columns=['contacts','date']).drop_duplicates()
         file_name = '{date} {chatFilter} WA.xlsx'.format(date=str(datetime.datetime.now().date()), chatFilter=chat_filter)
         df.to_excel(file_name, index=False)
-        return redirect(f'/completedPage?fileName={file_name}')
+        return redirect(f'completedPage?fileName={file_name}')
     except:
         driver.close()
         if 'Message: no such window: target window already closed' in str(traceback.format_exc()):

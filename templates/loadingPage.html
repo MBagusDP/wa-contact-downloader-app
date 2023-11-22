@@ -11,12 +11,9 @@
             var urlParams = new URLSearchParams(window.location.search);
             var loadingText = encodeURIComponent(urlParams.get('loadingText')).replace(/%20/g, '+');
             var chatFilter = encodeURIComponent(urlParams.get('chatFilter')).replace(/%20/g, '+');
-            // var keywordSearch = encodeURIComponent(urlParams.get('keywordSearch')).replace(/%20/g, '+');
             if (loadingText === 'Generating+QR+Code...') {
-                // window.location.href = 'WAQRCodeDownloader?chatFilter='+chatFilter+'&loadingText=Downloading+WA+Contacts...&keywordSearch='+keywordSearch;
                 window.location.href = 'WAQRCodeDownloader?chatFilter='+chatFilter+'&loadingText=Downloading+WA+Contacts...';
             } else { 
-                // window.location.href = 'WAContactsDownloader?chatFilter='+chatFilter+'&keywordSearch='+keywordSearch;
                 window.location.href = 'WAContactsDownloader?chatFilter='+chatFilter;
             }
         }

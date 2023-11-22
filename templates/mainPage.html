@@ -5,20 +5,6 @@
         <p style="font-size:20px; font-weight:bold;">This app lets you download</p>
         <p style="font-size:20px; font-weight:bold;">unsaved contacts in whatsapp!</p><br><br>
         <form action='/loadingPage'>
-            <!-- <p style="font-family:courier; font-size:20x; font-weight:bold;"">
-                Chat Filters
-                <select onchange="handleChatFilterChange()" id="chatFilter" name="chatFilter" style="font-family:courier; font-size:20px; font-weight:bold; color:black; background-color:white">
-                    <option value="Chats">None</option>
-                    <option value="Unread chats">Unread chats</option>
-                    <option value="Contacts">Contacts</option>
-                    <option value="Non-contacts">Non-contacts</option>
-                    <option value="Groups">Groups</option>
-                </select>
-            </p>
-            <p style="font-family:courier; font-size:20x; font-weight:bold;"">
-                Keyword
-                <input type="search" id="keywordSearch" name="keywordSearch" placeholder="Type a keyword..." value="" style="font-family:courier; font-size:20px; font-weight:bold; color:black;"">
-            </p> -->
             <input type="hidden" id="chatFilter" name="chatFilter" value="Non-contacts" style="font-family:courier; font-size:20px; font-weight:bold; color:black; background-color:white">
             <input type="hidden" id="loadingText" name="loadingText" value="Generating QR Code...">
             <input type="submit" value="START" style="font-family:courier; font-size:30px; font-weight:bold; color:black; background-color:#94d87c;">
@@ -26,7 +12,7 @@
     </div>
     <div style="position:absolute; bottom:10; right:40; text-align:center; font-family:courier; color:white;">
         <p style="font-size:20px; font-weight:bold; text-align:right; color:white;">For newcomers >>>
-            <a href="http://127.0.0.1:5000/tutorialPage">
+            <a href="/tutorialPage">
                 <button type="button" style="font-family:courier; font-size:20px; font-weight:bold; color:black; background-color:#94d87c;">Tutorial</button>
             </a>
         </p>
