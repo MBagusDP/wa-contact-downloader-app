@@ -91,12 +91,12 @@ def WAQRDownloader():
         options.add_argument('--headless=new')
         driver = webdriver.Chrome(options=options)
         driver.get(URL)
-        WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.XPATH, '//div[@class="_19vUU"]')))
+        WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.XPATH, '//div[@class="_akau"]')))
         qr_data_code = None
         for i in range(0,10):
             time.sleep(1)
             if qr_data_code is None:
-                qr_data_code = driver.find_element(By.XPATH, '//div[@class="_19vUU"]').get_attribute('data-ref')
+                qr_data_code = driver.find_element(By.XPATH, '//div[@class="_akau"]').get_attribute('data-ref')
             else:
                 break
         home_directory = os.path.expanduser("~")
@@ -119,7 +119,7 @@ def WAQRScanDetector():
     loading_text = request.args.get('loadingText')
     driver = current_app.driver
     try:
-        WebDriverWait(driver, 100).until(EC.visibility_of_element_located((By.XPATH, '//div[@class="_3RpB9"]')))
+        WebDriverWait(driver, 100).until(EC.visibility_of_element_located((By.XPATH, '//div[@class="_al_h"]')))
         home_directory = os.path.expanduser("~")
         path = os.path.join(home_directory, 'Downloads\\wa_qrcode.png')
         os.remove(path)
